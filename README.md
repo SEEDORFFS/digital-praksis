@@ -1,26 +1,45 @@
 # Digital praksis
 
-Forside med værktøjer og inspiration til undervisning: tre områder med hver sit bløde 3D-ikon og direkte links nedenunder. Siden er ren HTML og CSS med en lille smule JavaScript og kan lægges direkte på GitHub Pages.
+Praktisk vejledning til undervisere, der vil bruge digitale teknologier i deres egen undervisning. Forsiden har tre områder med hver sit bløde 3D-ikon. Hvert punkt åbner en vejledningsside, og de færdige apps bruges som eksempler.
+
+Siden er ren HTML og CSS med lidt JavaScript og kører direkte på GitHub Pages: https://seedorffs.github.io/digital-praksis/
 
 ## Filer
 
 | Fil | Indhold |
 |---|---|
-| `index.html` | **Siden og alt indhold:** områder, beskrivelser og links |
-| `css/style.css` | Udseendet |
-| `js/forside.js` | Kort trykreaktion på berøringsskærme (siden virker også uden den) |
-| `assets/ikoner/` | De tre ikoner: `<navn>.webp` er objektet, `<navn>-skygge.webp` er kontaktskyggen |
+| `index.html` | Forsiden: områder og links til vejledningerne |
+| `vejledning/<navn>/index.html` | Én mappe pr. vejledning. Adressen bliver `…/vejledning/<navn>/` |
+| `vejledning/_skabelon/index.html` | **Skabelon til nye vejledninger** med alle seks afsnit og forklaring |
+| `css/style.css` | Udseendet på forside og vejledninger |
+| `js/forside.js` | Kort trykreaktion på berøringsskærme |
+| `js/vejledning.js` | Knappen "Kopiér startprompt" |
+| `assets/ikoner/` | De tre ikoner. `<navn>.webp` er objektet, og `<navn>-skygge.webp` er kontaktskyggen |
 | `tools/render/` | 3D-modellerne og værktøjet, der laver ikonerne |
 
-## Tilføj eller ret et link
+## Status på vejledningerne
 
-Åbn `index.html`. Under hvert område står en liste (`<ul class="tools">`):
+| Side | Status |
+|---|---|
+| Byg din egen webapp med AI | Færdig |
+| Planlæg et undervisningsforløb (Regnbueskema GF2) | Eksemplet er beskrevet; trinvis vejledning mangler |
+| Følg elevernes progression (Holdtjek GF2 Tømrer) | Eksemplet er beskrevet; trinvis vejledning mangler |
+| Reflektér over lærepladsvalg (VirksomhedsMatch) | Eksemplet er beskrevet; trinvis vejledning mangler |
+| Styr tiden ved elevoplæg (Taletimer GF2 Tømrer) | Eksemplet er beskrevet; trinvis vejledning mangler |
+| AI i undervisningen | På vej |
+| Brug grafisk facilitering | På vej |
+| Lav en undervisningsvideo | På vej |
+| Lav en faglig podcast | På vej |
 
-- **Aktivt link:** kopiér en `<li>` med `<a class="tool" href="…">`, og ret adressen, navnet (`tool-name`) og typen (`tool-kind`, fx "Skema").
-- **Noget, der er på vej:** brug en `<li>` med `<span class="tool tool--soon">`. Den har intet link og viser "På vej".
-- **Når et "På vej"-punkt får et link:** udskift dets `<span class="tool tool--soon">…</span>` med et `<a class="tool">` som de aktive.
+## Lav en ny vejledning
 
-Ikonet over Organisering er en genvej til Regnbueskemaet. Ikoner over områder uden aktive links er ikke links.
+1. Kopiér mappen `vejledning/_skabelon` til `vejledning/<kort-navn>`. Brug små bogstaver og bindestreger, og skriv æ, ø og å som ae, oe og aa.
+2. Udfyld de afsnit, der er relevante, og slet resten. Kommentaren øverst i filen forklarer hvert felt.
+3. Tilføj et punkt på forsiden i det rigtige område.
+
+## Gør en "på vej"-side færdig
+
+Åbn siden, og erstat afsnittet "Denne vejledning er på vej" med de relevante afsnit fra skabelonen. Fjern linjen `<p class="status">`. På forsiden fjerner du `tool--soon` og `<span class="soon">På vej</span>` fra punktet.
 
 ## Lav ikonerne om
 
@@ -34,4 +53,4 @@ Modellerne står i `tools/render/ikoner.js`. Alle tre bruger samme kamera, lys o
 
 ## Tidligere versioner
 
-Det tidligere campuskort (mini next) ligger i git under tagget `campus-v4`. Ældre versioner hedder `v1`–`v4`. Brug fx `git checkout campus-v4` for at se kortet.
+Den første forside uden vejledninger er gemt i git under tagget `forside-v1`. Det tidligere campuskort ligger i det lokale mini-next-projekt (zip-filen i Dokumenter › Digital praksis).
