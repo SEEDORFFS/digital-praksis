@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Byg dit eget digitale værktøj · Digital praksis</title>
+<meta name="description" content="Har du en idé til noget, der kunne gøre din undervisning eller planlægning lettere? Med vibecoding beskriver du idéen med almindelige ord og får AI til at hjælpe med at bygge en app. Du behøver ikke kunne programmere for at begynde.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../../css/style.css">
+</head>
+<body class="guide area--teach">
+<a class="skip" href="#indhold">Spring til indhold</a>
+<header class="g-top">
+  <a class="g-back" href="../../"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg><span>Alle vejledninger</span></a>
+  <span class="g-crumb" aria-hidden="true">Digital praksis · Undervisning</span>
+</header>
+<main class="g-main" id="indhold">
+  <header class="g-head">
+    <img class="g-icon" src="../../assets/ikoner/undervisning.webp" alt="" width="900" height="900">
+    <div>
+      <p class="g-area">Undervisning · Vibecoding</p>
+      <h1>Byg dit eget digitale værktøj</h1>
+      <p class="g-lead">Har du en idé til noget, der kunne gøre din undervisning eller planlægning lettere? Med vibecoding beskriver du idéen med almindelige ord og får AI til at hjælpe med at bygge en app. Du behøver ikke kunne programmere for at begynde.</p>
+      
+    </div>
+  </header>
+
+    <section class="g-sec" id="start" aria-labelledby="h-start">
+      <h2 id="h-start">Sådan kommer du i gang</h2>
+      <p id="fra-boks" class="fra" hidden></p>
+      <p>Start med et konkret behov og få funktioner. Prøv den første version, fortæl hvad der skal ændres, og byg videre i små skridt. Du bidrager med fagligheden og vurderer, om resultatet fungerer i praksis.</p>
+      <p id="fra-eksempel"><strong>Regnbueskemaet er et eksempel:</strong> Et behov for overblik over undervisningsforløbet blev til et digitalt planlægningsværktøj. Din idé kan være noget helt andet.</p>
+      <ol class="steps steps--compact"><li><h3>Vælg ét konkret behov</h3><p>Noget, du gør igen og igen, og som kunne gå lettere.</p></li><li><h3>Beskriv målgruppen og resultatet</h3><p>Hvem bruger appen, hvor bruges den, og hvad er anderledes, når den virker?</p></li><li><h3>Begynd med få funktioner</h3><p>Højst tre. Resten kan komme i næste version.</p></li><li><h3>Bed AI om en første version</h3><p>Brug startprompten nedenfor, og svar på AI's spørgsmål.</p></li><li><h3>Afprøv med realistiske eksempler</h3><p>Brug opdigtede navne. Prøv på mobil og computer, og prøv også at gøre noget forkert.</p></li><li><h3>Ret én ting ad gangen</h3><p>Skriv præcist, hvad der skal ændres, og afprøv igen efter hver ændring.</p></li><li><h3>Udgiv og del, når den er afprøvet</h3><p>Lad en kollega eller nogle få elever prøve den først.</p></li></ol>
+    </section>
+
+    <section class="g-sec" id="lav-din-egen" aria-labelledby="h-lav-din-egen">
+      <h2 id="h-lav-din-egen">Kopiér en startprompt</h2>
+      <p>Udfyld felterne, så tilpasser prompten sig. Du kan også rette direkte i teksten, før du kopierer den til din AI-assistent, fx Claude, ChatGPT eller Gemini. Prompten starter en dialog: AI stiller spørgsmål, før den bygger.</p>
+      <div class="prompt">
+        <div class="prompt-fields">
+          <label class="pf"><span>Mit fag</span><input id="pf-fag" data-linje="Mit fag: " type="text" autocomplete="off" placeholder="fx tømrer på grundforløb 2"></label>
+          <label class="pf"><span>Målgruppe</span><input id="pf-maalgruppe" data-linje="Målgruppe: " type="text" autocomplete="off" placeholder="fx elever på GF2"></label>
+          <label class="pf pf--wide"><span>Mit behov</span><input id="pf-behov" data-linje="Mit behov: " type="text" autocomplete="off" placeholder="fx eleverne mister overblikket over ugens opgaver"></label>
+        </div>
+        <label class="prompt-label" for="startprompt">Startprompt</label>
+        <textarea id="startprompt" class="prompt-text prompt-text--short" rows="11" spellcheck="true">Jeg er underviser og vil gerne bygge en lille app til min undervisning sammen med dig. Jeg kan ikke programmere, så forklar i almindeligt dansk.
+
+Mit fag: [fx tømrer på grundforløb 2]
+Målgruppe: [hvem skal bruge appen: eleverne, dig selv eller kolleger?]
+Mit behov: [hvad skal blive lettere i din undervisning eller planlægning?]
+
+Hjælp mig med at gøre idéen konkret. Stil mig få spørgsmål ad gangen. Foreslå derefter en enkel første version med højst tre funktioner, der virker i browseren på både mobil og computer. Brug ingen elevnavne eller andre personoplysninger. Når appen er klar, så fortæl mig, hvordan jeg afprøver den.</textarea>
+        <div class="prompt-bar">
+          <button type="button" class="btn-copy" id="kopier" data-target="startprompt">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>
+            Kopiér startprompt
+          </button>
+          <button type="button" class="btn-reset" id="gendan" data-target="startprompt">Gendan</button>
+          <p class="prompt-msg" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="g-sec" id="afproev" aria-labelledby="h-afproev">
+      <h2 id="h-afproev">Før du bruger appen med elever</h2>
+      <ul class="check">
+        <li>Virker den på de skærme, der faktisk bruges: mobil, pc og projektor?</li>
+        <li>Er tekst og fagligt indhold korrekt? AI kan tage fejl.</li>
+        <li>Hvad sker der, hvis siden genindlæses? Forsvinder noget?</li>
+        <li>Indeholder den personoplysninger? Så skal skolens regler følges.</li>
+        <li>Har du en plan B, hvis den ikke virker i timen?</li>
+      </ul>
+    </section>
+
+    <section class="g-sec" id="mere" aria-labelledby="h-mere">
+      <h2 id="h-mere">Vil du vide mere?</h2>
+      <a class="ext-guide" href="https://stellular-kleicha-bcf82d.netlify.app/" target="_blank" rel="noopener">
+        <span class="ext-guide-label">CIU's vibecoding-guide</span>
+        <span class="ext-guide-sub">Af Mark Arpe Mortensen, specialkonsulent i CIU. Flere idéer og en uddybning af metoden.</span>
+        <svg class="ext" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg><span class="sr-only">(åbner i en ny fane)</span>
+      </a>
+      <p class="hint">Eksempler fra Digital praksis, lavet til GF2 Tømrer:</p>
+      <ul class="mini-links"><li><a href="../styr-tiden-ved-elevoplaeg/">Taletimer GF2 Tømrer</a><span>én funktion: en nedtælling</span></li><li><a href="../reflekter-over-laerepladsvalg/">VirksomhedsMatch</a><span>et refleksionsværktøj til eleverne</span></li><li><a href="../planlaeg-et-forloeb/">Regnbueskema GF2</a><span>et større planlægningsværktøj</span></li><li><a href="../foelg-elevernes-progression/">Holdtjek GF2 Tømrer</a><span>en tjekliste til faglæreren</span></li></ul>
+    </section>
+
+    <nav class="g-more" aria-labelledby="h-more">
+      <h2 id="h-more">Flere vejledninger i Undervisning</h2>
+      <ul><li><a href="../ai-i-undervisningen/">AI i undervisningen</a></li><li><a href="../grafisk-facilitering/">Brug grafisk facilitering</a> <span class="soon">På vej</span></li></ul>
+    </nav>
+  <p class="g-foot"><a class="g-back" href="../../"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg><span>Tilbage til oversigten</span></a></p>
+</main>
+<script id="fra-data" type="application/json">{"regnbueskema": {"navn": "Regnbueskemaet", "side": "planlaeg-et-forloeb", "tekst": "Et behov for overblik over undervisningsforløbet blev til et digitalt planlægningsværktøj."}, "holdtjek": {"navn": "Holdtjek", "side": "foelg-elevernes-progression", "tekst": "Et behov for at følge hele holdets opgaver, karakterer og VFU blev til en tjekliste for faglæreren."}, "virksomhedsmatch": {"navn": "VirksomhedsMatch", "side": "reflekter-over-laerepladsvalg", "tekst": "Et behov for at hjælpe eleverne med at overveje, hvilken virksomhed der passer til dem, blev til et refleksionsværktøj."}, "taletimer": {"navn": "Taletimeren", "side": "styr-tiden-ved-elevoplaeg", "tekst": "Et behov for at give alle elever lige lang taletid blev til en nedtælling på projektoren."}}</script>
+<script src="../../js/vejledning.js"></script>
+</body>
+</html>
