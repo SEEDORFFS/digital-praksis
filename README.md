@@ -26,7 +26,7 @@ Siden er ren HTML og CSS med lidt JavaScript og kører direkte på GitHub Pages:
 | Følg elevernes progression (Holdtjek GF2 Tømrer) | Færdig efter samme princip |
 | Reflektér over lærepladsvalg (VirksomhedsMatch) | Færdig efter samme princip |
 | Styr tiden ved elevoplæg (Taletimer GF2 Tømrer) | Færdig efter samme princip |
-| Lav en faglig podcast | To eksempler at lytte til; vejledningen i at lave en podcast mangler |
+| Lav en faglig podcast | To episoder med afspiller (MP3 i `assets/podcast/`, ingen login); vejledningen i at lave en podcast mangler |
 | AI i undervisningen, Brug grafisk facilitering, Lav en undervisningsvideo | På vej |
 
 Knappen **Byg din egen app med AI** på appsiderne linker til `vejledning/byg-din-egen-webapp/?fra=<app>`. Så viser vibecoding-siden et kort eksempel fra den app, man kom fra. Eksemplerne står i `<script id="fra-data">` nederst i den side.
