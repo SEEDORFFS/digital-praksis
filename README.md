@@ -27,7 +27,8 @@ Siden er ren HTML og CSS med lidt JavaScript og kører direkte på GitHub Pages:
 | Reflektér over lærepladsvalg (VirksomhedsMatch) | Færdig efter samme princip |
 | Styr tiden ved elevoplæg (Taletimer GF2 Tømrer) | Færdig efter samme princip |
 | Lav en faglig podcast | Færdig: to episoder med afspiller (MP3 i `assets/podcast/`, ingen login) og vejledning i Gemini Notebook med fokus-prompt |
-| AI i undervisningen, Brug grafisk facilitering, Lav en undervisningsvideo | På vej |
+| AI i undervisningen | Færdig: vejledning + interaktivt modul om AI’s historie i `vejledning/ai-i-undervisningen/ai-historie/` (30 min + 15 min fordybelse, quiz, exitopgave, kildeliste med dato for faktatjek) |
+| Brug grafisk facilitering, Lav en undervisningsvideo | På vej |
 
 Knappen **Byg din egen app med AI** på appsiderne linker til `vejledning/byg-din-egen-webapp/?fra=<app>`. Så viser vibecoding-siden et kort eksempel fra den app, man kom fra. Eksemplerne står i `<script id="fra-data">` nederst i den side.
 
