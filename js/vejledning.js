@@ -1,20 +1,20 @@
 /*
- * Digital praksis · startprompt
- * - Felterne (fag, målgruppe, behov) skriver sig ind i prompten.
- * - "Kopiér startprompt" kopierer den aktuelle tekst, også det brugeren har rettet.
- *   Virker kopiering ikke, markeres teksten, så den kan kopieres manuelt.
+ * Digital praksis · prompt-boks med felter og kopiknap
+ * Bruges af alle vejledninger med en prompt-boks.
+ * - Et felt med data-linje="Mit fag: " skriver sig ind i den linje i prompten,
+ *   der starter med samme tekst. Brugerens øvrige rettelser i teksten bevares.
+ * - "Kopiér" kopierer den aktuelle tekst. Virker kopiering ikke, markeres teksten,
+ *   så den kan kopieres manuelt.
+ * - "Gendan" sætter den oprindelige tekst tilbage med felternes indhold.
  * - ?fra=<app> i adressen viser et kort eksempel fra den app, man kommer fra.
  */
 (function () {
   'use strict';
-  var btn = document.getElementById('kopier');
-  var reset = document.getElementById('gendan');
-  var msg = document.getElementById('kopier-besked');
-  var box = btn ? document.getElementById(btn.getAttribute('data-target')) : null;
 
   /* ---------- kommer fra en app ---------- */
   try {
-    var data = JSON.parse((document.getElementById('fra-data') || {}).textContent || '{}');
+    var dataEl = document.getElementById('fra-data');
+    var data = dataEl ? JSON.parse(dataEl.textContent) : {};
     var fra = new URLSearchParams(location.search).get('fra');
     var app = fra && data[fra];
     if (app) {
@@ -36,80 +36,72 @@
     }
   } catch (e) { /* siden virker også uden */ }
 
-  if (!box) return;
+  /* ---------- prompt-bokse ---------- */
+  function esc(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
 
-  /* ---------- felter → prompt ---------- */
-  var tpl = box.getAttribute('data-skabelon') || '';
-  var defaults = { fag: '', maalgruppe: '', behov: '' };
-  var fields = {};
-  ['fag', 'maalgruppe', 'behov'].forEach(function (k) {
-    fields[k] = document.getElementById('pf-' + k);
-  });
-  // standardteksterne i firkantede parenteser hentes fra den oprindelige prompt
-  var original = box.value;
-  [['fag', /^Mit fag: (.*)$/m], ['maalgruppe', /^Målgruppe: (.*)$/m], ['behov', /^Mit behov: (.*)$/m]].forEach(function (p) {
-    var m = original.match(p[1]); defaults[p[0]] = m ? m[1] : '';
-  });
-  var LINES = { fag: /^Mit fag: .*$/m, maalgruppe: /^Målgruppe: .*$/m, behov: /^Mit behov: .*$/m };
-  var LABEL = { fag: 'Mit fag: ', maalgruppe: 'Målgruppe: ', behov: 'Mit behov: ' };
-
-  function val(k) {
-    var f = fields[k];
-    var v = f && f.value.trim();
-    return v ? v : defaults[k];
-  }
-  function fill() {
-    // ret kun de tre linjer, så brugerens egne rettelser i resten af teksten bevares
-    var t = box.value;
-    Object.keys(LINES).forEach(function (k) {
-      if (LINES[k].test(t)) t = t.replace(LINES[k], LABEL[k] + val(k));
+  document.querySelectorAll('.prompt').forEach(function (wrap) {
+    var box = wrap.querySelector('textarea');
+    var btn = wrap.querySelector('.btn-copy');
+    var reset = wrap.querySelector('.btn-reset');
+    var msg = wrap.querySelector('.prompt-msg');
+    if (!box || !btn) return;
+    var original = box.value;
+    var fields = [].slice.call(wrap.querySelectorAll('input[data-linje]')).map(function (inp) {
+      var label = inp.getAttribute('data-linje');
+      var re = new RegExp('^' + esc(label) + '.*$', 'm');
+      var m = original.match(re);
+      return { inp: inp, label: label, re: re, def: m ? m[0].slice(label.length) : '' };
     });
-    box.value = t;
-  }
-  Object.keys(fields).forEach(function (k) {
-    if (fields[k]) fields[k].addEventListener('input', fill);
-  });
 
-  /* ---------- kopiér ---------- */
-  var timer = 0;
-  function say(text, ok) {
-    msg.textContent = text;
-    msg.className = 'prompt-msg ' + (ok ? 'is-ok' : 'is-warn');
-    clearTimeout(timer);
-    if (ok) timer = setTimeout(function () { msg.textContent = ''; msg.className = 'prompt-msg'; }, 4000);
-  }
-  function manual() {
-    box.focus();
-    box.select();
-    say('Kunne ikke kopiere automatisk. Teksten er markeret: tryk Ctrl+C (Cmd+C på Mac).', false);
-  }
-  function legacyCopy() {
-    try {
+    function apply(text) {
+      fields.forEach(function (f) {
+        var v = f.inp.value.trim() || f.def;
+        if (f.re.test(text)) text = text.replace(f.re, function () { return f.label + v; });
+      });
+      return text;
+    }
+    fields.forEach(function (f) {
+      f.inp.addEventListener('input', function () { box.value = apply(box.value); });
+    });
+
+    var timer = 0;
+    function say(text, ok) {
+      if (!msg) return;
+      msg.textContent = text;
+      msg.className = 'prompt-msg ' + (ok ? 'is-ok' : 'is-warn');
+      clearTimeout(timer);
+      if (ok) timer = setTimeout(function () { msg.textContent = ''; msg.className = 'prompt-msg'; }, 4000);
+    }
+    function manual() {
       box.focus();
       box.select();
-      var ok = document.execCommand && document.execCommand('copy');
-      box.setSelectionRange(box.value.length, box.value.length);
-      return !!ok;
-    } catch (e) { return false; }
-  }
-  btn.addEventListener('click', function () {
-    var text = box.value;
-    var done = function () { say('Kopieret. Sæt teksten ind hos din AI-assistent.', true); };
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(done, function () { if (legacyCopy()) done(); else manual(); });
-    } else if (legacyCopy()) {
-      done();
-    } else {
-      manual();
+      say('Kunne ikke kopiere automatisk. Teksten er markeret: tryk Ctrl+C (Cmd+C på Mac).', false);
     }
-  });
-
-  /* ---------- gendan: oprindelig tekst med felternes indhold ---------- */
-  if (reset) reset.addEventListener('click', function () {
-    box.value = tpl
-      ? tpl.replace('{fag}', val('fag')).replace('{maalgruppe}', val('maalgruppe')).replace('{behov}', val('behov'))
-      : original;
-    say('Startprompten er gendannet.', true);
-    box.focus();
+    function legacyCopy() {
+      try {
+        box.focus();
+        box.select();
+        var ok = document.execCommand && document.execCommand('copy');
+        box.setSelectionRange(box.value.length, box.value.length);
+        return !!ok;
+      } catch (e) { return false; }
+    }
+    var okText = btn.getAttribute('data-ok') || 'Kopieret. Sæt teksten ind hos din AI-assistent.';
+    btn.addEventListener('click', function () {
+      var text = box.value;
+      var done = function () { say(okText, true); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { if (legacyCopy()) done(); else manual(); });
+      } else if (legacyCopy()) {
+        done();
+      } else {
+        manual();
+      }
+    });
+    if (reset) reset.addEventListener('click', function () {
+      box.value = apply(original);
+      say('Teksten er gendannet.', true);
+      box.focus();
+    });
   });
 })();

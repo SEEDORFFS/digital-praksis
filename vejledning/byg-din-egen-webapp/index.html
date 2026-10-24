@@ -40,18 +40,12 @@
       <p>Udfyld felterne, så tilpasser prompten sig. Du kan også rette direkte i teksten, før du kopierer den til din AI-assistent, fx Claude, ChatGPT eller Gemini. Prompten starter en dialog: AI stiller spørgsmål, før den bygger.</p>
       <div class="prompt">
         <div class="prompt-fields">
-          <label class="pf"><span>Mit fag</span><input id="pf-fag" type="text" autocomplete="off" placeholder="fx tømrer på grundforløb 2"></label>
-          <label class="pf"><span>Målgruppe</span><input id="pf-maalgruppe" type="text" autocomplete="off" placeholder="fx elever på GF2"></label>
-          <label class="pf pf--wide"><span>Mit behov</span><input id="pf-behov" type="text" autocomplete="off" placeholder="fx eleverne mister overblikket over ugens opgaver"></label>
+          <label class="pf"><span>Mit fag</span><input id="pf-fag" data-linje="Mit fag: " type="text" autocomplete="off" placeholder="fx tømrer på grundforløb 2"></label>
+          <label class="pf"><span>Målgruppe</span><input id="pf-maalgruppe" data-linje="Målgruppe: " type="text" autocomplete="off" placeholder="fx elever på GF2"></label>
+          <label class="pf pf--wide"><span>Mit behov</span><input id="pf-behov" data-linje="Mit behov: " type="text" autocomplete="off" placeholder="fx eleverne mister overblikket over ugens opgaver"></label>
         </div>
         <label class="prompt-label" for="startprompt">Startprompt</label>
-        <textarea id="startprompt" class="prompt-text prompt-text--short" rows="11" spellcheck="true" data-skabelon="Jeg er underviser og vil gerne bygge en lille app til min undervisning sammen med dig. Jeg kan ikke programmere, så forklar i almindeligt dansk.
-
-Mit fag: {fag}
-Målgruppe: {maalgruppe}
-Mit behov: {behov}
-
-Hjælp mig med at gøre idéen konkret. Stil mig få spørgsmål ad gangen. Foreslå derefter en enkel første version med højst tre funktioner, der virker i browseren på både mobil og computer. Brug ingen elevnavne eller andre personoplysninger. Når appen er klar, så fortæl mig, hvordan jeg afprøver den.">Jeg er underviser og vil gerne bygge en lille app til min undervisning sammen med dig. Jeg kan ikke programmere, så forklar i almindeligt dansk.
+        <textarea id="startprompt" class="prompt-text prompt-text--short" rows="11" spellcheck="true">Jeg er underviser og vil gerne bygge en lille app til min undervisning sammen med dig. Jeg kan ikke programmere, så forklar i almindeligt dansk.
 
 Mit fag: [fx tømrer på grundforløb 2]
 Målgruppe: [hvem skal bruge appen: eleverne, dig selv eller kolleger?]
@@ -64,7 +58,7 @@ Hjælp mig med at gøre idéen konkret. Stil mig få spørgsmål ad gangen. Fore
             Kopiér startprompt
           </button>
           <button type="button" class="btn-reset" id="gendan" data-target="startprompt">Gendan</button>
-          <p class="prompt-msg" id="kopier-besked" role="status" aria-live="polite"></p>
+          <p class="prompt-msg" role="status" aria-live="polite"></p>
         </div>
       </div>
     </section>
