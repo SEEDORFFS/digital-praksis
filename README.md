@@ -21,15 +21,15 @@ Siden er ren HTML og CSS med lidt JavaScript og kører direkte på GitHub Pages:
 
 | Side | Status |
 |---|---|
-| Byg din egen webapp med AI | Færdig |
-| Planlæg et undervisningsforløb (Regnbueskema GF2) | Eksemplet er beskrevet; trinvis vejledning mangler |
-| Følg elevernes progression (Holdtjek GF2 Tømrer) | Eksemplet er beskrevet; trinvis vejledning mangler |
-| Reflektér over lærepladsvalg (VirksomhedsMatch) | Eksemplet er beskrevet; trinvis vejledning mangler |
-| Styr tiden ved elevoplæg (Taletimer GF2 Tømrer) | Eksemplet er beskrevet; trinvis vejledning mangler |
-| AI i undervisningen | På vej |
-| Brug grafisk facilitering | På vej |
-| Lav en undervisningsvideo | På vej |
-| Lav en faglig podcast | På vej |
+| Byg din egen app med AI (fælles vibecoding-vejledning) | Færdig: startprompt med felter, kopiknap, link til CIU's vibecoding-guide |
+| Planlæg et undervisningsforløb (Regnbueskema GF2) | Færdig: kort intro, Prøv Regnbueskemaet, valg mellem at bruge og bygge selv |
+| Følg elevernes progression (Holdtjek GF2 Tømrer) | Færdig efter samme princip |
+| Reflektér over lærepladsvalg (VirksomhedsMatch) | Færdig efter samme princip |
+| Styr tiden ved elevoplæg (Taletimer GF2 Tømrer) | Færdig efter samme princip |
+| Lav en faglig podcast | To eksempler at lytte til; vejledningen i at lave en podcast mangler |
+| AI i undervisningen, Brug grafisk facilitering, Lav en undervisningsvideo | På vej |
+
+Knappen **Byg din egen app med AI** på appsiderne linker til `vejledning/byg-din-egen-webapp/?fra=<app>`. Så viser vibecoding-siden et kort eksempel fra den app, man kom fra. Eksemplerne står i `<script id="fra-data">` nederst i den side.
 
 ## Lav en ny vejledning
 

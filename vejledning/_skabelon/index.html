@@ -27,14 +27,14 @@
                area--teach eller area--media) og ikonfilen.
             3. Udfyld de afsnit, der er relevante. SLET afsnit,
                der ikke har indhold. Vis kun det, der er færdigt.
-            4. Er vejledningen ikke færdig, så behold linjen
-               <p class="status">…</p> under indledningen.
+            4. Mangler der noget, så markér det præcis dér, hvor det
+               mangler: <p class="missing">…er på vej.</p>
             5. Tilføj et link til siden på forsiden (index.html).
   Afsnittene og deres rækkefølge:
-    1 Hvad kan du bruge det til?   (id="hvad")
+    1 Hvad kan du bruge det til?   (id="hvad")   udelad, hvis det gentager indledningen
     2 Det skal du bruge           (id="skal-bruge")
     3 Sådan gør du                (id="saadan")
-    4 Se eller brug et eksempel   (id="eksempel")
+    4 Prøv <produkt>              (id="proev")  kort tekst + valg: Åbn <produkt> / Byg din egen app med AI
     5 Lav din egen                (id="lav-din-egen")
     6 Afprøv i din undervisning   (id="afproev")
   ============================================================
@@ -45,8 +45,7 @@
       <p class="g-area">Område</p>
       <h1>Handlingsorienteret titel</h1>
       <p class="g-lead">Én sætning om, hvad underviseren får ud af siden.</p>
-      <p class="status"><span class="status-dot" aria-hidden="true"></span>Den trinvise vejledning er på vej.</p>
-    </div>
+          </div>
   </header>
 
   <section class="g-sec" id="hvad" aria-labelledby="h-hvad">
@@ -65,14 +64,14 @@
   </section>
 
   <section class="g-sec" id="eksempel" aria-labelledby="h-eksempel">
-    <h2 id="h-eksempel">Se eller brug et eksempel</h2>
+    <h2 id="h-eksempel">Prøv Produktet</h2>
     <article class="example">
       <h3>Produktets navn</h3>
       <p><strong>Det viser:</strong> Hvad eksemplet viser.</p>
       <p><strong>Sådan kan du bruge det:</strong> Hvordan man tager det i brug.</p>
       <div class="choices">
-        <a class="choice choice--use" href="https://…" target="_blank" rel="noopener"><span class="choice-label">Brug det færdige eksempel</span><span class="choice-sub">Åbn produktet</span></a>
-        <a class="choice choice--make" href="../byg-din-egen-webapp/#lav-din-egen"><span class="choice-label">Lav din egen</span><span class="choice-sub">Med en startprompt til AI</span></a>
+        <a class="choice choice--use" href="https://…" target="_blank" rel="noopener"><span class="choice-label">Åbn Produktet</span><span class="choice-sub">Det færdige værktøj</span></a>
+        <a class="choice choice--make" href="../byg-din-egen-webapp/?fra=APP-NØGLE#start"><span class="choice-label">Byg din egen app med AI</span><span class="choice-sub">Fra idé til første version</span></a>
       </div>
     </article>
   </section>
